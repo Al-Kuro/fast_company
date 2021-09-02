@@ -1,17 +1,9 @@
 import React from "react";
 
-const Bookmark = ({
-  id,
-  bookmarkStart,
-  bookmarkEnd,
-  onHandleToggleBookmark,
-}) => {
-  // в return пытался сравнить состояние начальное с обновленным
-  // чтобы менялось состояние отдельной кнопки
-  // а в любом случае меняется одновременно состояние у всех кнопок
+const Bookmark = ({ id, bookmark, onHandleToggleBookmark }) => {
   return (
     <button id={id} onClick={() => onHandleToggleBookmark(id)}>
-      {bookmarkStart === bookmarkEnd ? bookmarkStart : bookmarkEnd}
+      {bookmark}
     </button>
   );
 };

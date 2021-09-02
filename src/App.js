@@ -29,14 +29,12 @@ function App() {
     </svg>
   );
 
-  const [iconsBookmark, setIconsBookmark] = useState(bookmark);
-
   const usersApi = api.users.fetchAll();
   const updateUsersApi = [...usersApi].map(
     (user) =>
       (user = {
         ...user,
-        bookmark: iconsBookmark,
+        bookmark: bookmark,
         isBookmark: false,
       })
   );
@@ -53,12 +51,11 @@ function App() {
     if (!newUsers[elementIndex].isBookmark) {
       newUsers[elementIndex].bookmark = bookmarkFill;
       newUsers[elementIndex].isBookmark = true;
-      setIconsBookmark(bookmarkFill);
     } else {
       newUsers[elementIndex].bookmark = bookmark;
       newUsers[elementIndex].isBookmark = false;
-      setIconsBookmark(bookmark);
     }
+    setUsers(newUsers);
   };
 
   const getBadges = () => {
@@ -73,8 +70,6 @@ function App() {
           users={users}
           onDelete={handleDelete}
           onBadges={getBadges}
-          bookmarkStart={bookmark} //начальное состояние
-          bookmarkEnd={iconsBookmark} //обновленное состояние
           onHandleToggleBookmark={handleToggleBookmark}
         />
       ) : (
