@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Bookmark = ({ id, bookmark, onHandleToggleBookmark }) => {
+const Bookmark = ({ id, bookmark, onToggleBookmark }) => {
     return (
-        <button id={id} onClick={() => onHandleToggleBookmark(id)}>
+        <button id={id} onClick={() => onToggleBookmark(id)}>
             {bookmark}
         </button>
     );
@@ -11,7 +11,7 @@ const Bookmark = ({ id, bookmark, onHandleToggleBookmark }) => {
 Bookmark.propTypes = {
     id: PropTypes.string.isRequired,
     bookmark: PropTypes.node.isRequired,
-    onHandleToggleBookmark: PropTypes.func.isRequired
+    onToggleBookmark: PropTypes.func.isRequired
 };
 
 export default Bookmark;

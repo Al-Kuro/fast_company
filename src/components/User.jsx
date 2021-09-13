@@ -10,8 +10,7 @@ const User = ({
     qualities,
     completedMeetings,
     rate,
-    onDelete,
-    onBadges,
+    onDeleteUser,
     ...rest
 }) => {
     return (
@@ -20,11 +19,7 @@ const User = ({
                 <td>{name}</td>
                 <td>
                     {qualities.map((qualitie) => (
-                        <Qualitie
-                            key={qualitie._id}
-                            {...qualitie}
-                            onBadges={onBadges}
-                        />
+                        <Qualitie key={qualitie._id} {...qualitie} />
                     ))}
                 </td>
                 <td>{profession.name}</td>
@@ -35,8 +30,8 @@ const User = ({
                 </td>
                 <td>
                     <button
-                        className={`${onBadges()}danger`}
-                        onClick={() => onDelete(_id)}
+                        className="badge bg-danger"
+                        onClick={() => onDeleteUser(_id)}
                     >
                         delete
                     </button>
@@ -46,14 +41,13 @@ const User = ({
     );
 };
 User.propTypes = {
-    _id: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    profession: PropTypes.string.isRequired,
+    profession: PropTypes.object.isRequired,
     qualities: PropTypes.array.isRequired,
     completedMeetings: PropTypes.number.isRequired,
     rate: PropTypes.number.isRequired,
-    onDelete: PropTypes.func.isRequired,
-    onBadges: PropTypes.func.isRequired
+    onDeleteUser: PropTypes.func.isRequired
 };
 
 export default User;

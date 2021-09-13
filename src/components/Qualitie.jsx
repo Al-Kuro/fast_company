@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Qualitie = ({ color, name, _id, onBadges }) => {
+const Qualitie = ({ color, name, _id }) => {
     return (
         <span key={_id}>
-            <span className={`${onBadges()}${color}`}>{name}</span>
+            <span className={`badge bg-${color}`}>{name}</span>
             &nbsp;
         </span>
     );
@@ -12,8 +12,7 @@ const Qualitie = ({ color, name, _id, onBadges }) => {
 Qualitie.propTypes = {
     color: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    _id: PropTypes.number.isRequired,
-    onBadges: PropTypes.func.isRequired
+    _id: PropTypes.string.isRequired
 };
 
 export default Qualitie;
