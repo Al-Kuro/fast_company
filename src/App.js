@@ -2,11 +2,7 @@ import React from "react";
 import Users from "./components/Users.jsx";
 
 function App() {
-    return (
-        <div>
-            <Users />
-        </div>
-    );
+    return <Users />;
 }
 
 export default App;

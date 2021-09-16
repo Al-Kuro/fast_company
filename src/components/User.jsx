@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Qualitie from "./Qualitie.jsx";
-import Bookmark from "./Bookmark.jsx";
+import QualitiesList from "./QualitiesList";
 
 const User = ({
     _id,
@@ -10,7 +9,6 @@ const User = ({
     qualities,
     completedMeetings,
     rate,
-    onDeleteUser,
     ...rest
 }) => {
     return (
@@ -18,24 +16,11 @@ const User = ({
             <tr key={_id}>
                 <td>{name}</td>
                 <td>
-                    {qualities.map((qualitie) => (
-                        <Qualitie key={qualitie._id} {...qualitie} />
-                    ))}
+                    <QualitiesList />
                 </td>
                 <td>{profession.name}</td>
                 <td>{completedMeetings}</td>
                 <td>{rate}</td>
-                <td>
-                    <Bookmark key={_id} id={_id} {...rest} />
-                </td>
-                <td>
-                    <button
-                        className="badge bg-danger"
-                        onClick={() => onDeleteUser(_id)}
-                    >
-                        delete
-                    </button>
-                </td>
             </tr>
         </tbody>
     );
@@ -46,8 +31,7 @@ User.propTypes = {
     profession: PropTypes.object.isRequired,
     qualities: PropTypes.array.isRequired,
     completedMeetings: PropTypes.number.isRequired,
-    rate: PropTypes.number.isRequired,
-    onDeleteUser: PropTypes.func.isRequired
+    rate: PropTypes.number.isRequired
 };
 
 export default User;
